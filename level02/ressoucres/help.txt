@@ -1,0 +1,29 @@
+ssh level02@192.168.1.19 -p 4242
+
+scp -P 4242 level02@192.168.1.19:/home/user/level02/level02.pcap /Users/morganealbanese/Desktop/wireshark
+
+On met les droits au fichiers copier chmod 777
+On l’ouvre dans wireshark
+En regardant la partie ascii on fini par tombé sur un packet contenant passwd (n°43)
+
+On peut trouver l’input envoyer par 59.233.235.218
+Les pakets envoies 1 char. (Dernier couple hexadécimal)
+
+66 74 5f 77 61 6e 64 72 7f 7f 7f 4e 44 52 65 6c 7f 4c 30 4c 0d
+
+Pour aller plus vite, on peut utiliser la fonction 
+Follow TCP stream pour voir l’échange
+On trouve le mdp: ft_wandr...NDRel.L0L
+Qui ne fonctionne pas avec su flag02
+
+À l’aide d’un décodeur ascii
+	https://www.rapidtables.com/convert/number/ascii-to-hex.html
+On remarque que le code ascii pour un ‘.’ Est 2E est non 7f
+On peut convertir 7f en décimal pour le comparé à la table ascii: 
+Dec 7f = 127
+Dans la table ASCII 127 correspond à DEL 
+Le mdr deviens : ft_waNDReL0L
+
+Su flag02
+
+flag: kooda2puivaav1idi4f57q8iq

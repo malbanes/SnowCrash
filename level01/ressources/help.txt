@@ -1,0 +1,18 @@
+Un indice à était laissé dans l’exercice précédent ‘John’ listé dans les ressources de la vidéo de présentation. 
+
+En effet, on à accès à /etc/passwd mais pas /etc/shadow avec cat
+On peut donc exploité le mot de passe avec john the ripper
+ En effet, dans /etc/passwd la seule ligne contenant les informations utilisées pour valider le mot de passe d'un utilisateur ‘x’ est 
+Flag01. 
+flag01:42hDRfypTqqnw:3001:3001::/home/flag/flag01:/bin/bash
+On copie le mdp et on le met dans une autre machine
+Avec john d’installer
+brew install john
+Créer le fichier à hacher 
+Password.txt 
+Et utiliser 
+John password.txt 
+(Utiliser ensuite show si pas bien vu le mdr)
+Résultat: abcdefg
+On le test dans la vm
+C’est bon, token: f2av5il02puano7naaf6adaaf

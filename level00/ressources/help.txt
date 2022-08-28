@@ -1,0 +1,23 @@
+On sait avec la vidéo de présentation que le flag est accessible par l’user flag00. On peut utiliser find -groups/-user pour voir à quel fichier flag00 à acces
+
+find / -group flag00 2>/tmp/errs
+	liste pleine de : Permission denied (impossible de les lires donc inutile)
+-trouver un dossier ou on peut écrire et y mettre les erreurs pour qu’elles ne soient plus sut stdout (sortie standard)
+find / -group flag00 2>/tmp/errs
+	/usr/sbin/john
+	/rofs/usr/sbin/john
+On nous dit dans le README de la vidéo que le flag se trouve dans le premier fichier. (Les 2 sont identiques)
+	cdiiddwpgswtgt
+On se sh avec le flag: su: Authentication failure
+Le mot de passe doit être crypté
+Dans les ressources on nous propose 
+https://www.dcode.fr/identification-chiffrement
+Ils ont une fonctionnalité pour détecter le type de chiffrement. 
+Résultat peut fiable testons le premier (rot13/cesar)
+On essaie le premier,
+Su flag00
+	nottoohardhere
+Par chance, ce mot de passe fonctionne. 
+Après un get flag:
+Su level01
+ token : x24ti5gi3x0ol2eh4esiuxias
