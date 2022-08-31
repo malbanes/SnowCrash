@@ -1,9 +1,12 @@
-ssh level02@192.168.1.19 -p 4242
+On nour présente un .pcap
 
-scp -P 4242 level02@192.168.1.19:/home/user/level02/level02.pcap /Users/morganealbanese/Desktop/wireshark
+scp -P 4242 level02@192.XXX.1.21:/home/user/level02/level02.pcap /Users/morganealbanese/Desktop/wireshark
 
+scp /Users/morganealbanese/Desktop/wireshark/level02.pcap user42@127.0.0.1:/home/user42/Bureau/level01
 On met les droits au fichiers copier chmod 777
-On l’ouvre dans wireshark
+
+sudo apt install wireshark
+On l’ouvre dans wireshark graphique VM
 En regardant la partie ascii on fini par tombé sur un packet contenant passwd (n°43)
 
 On peut trouver l’input envoyer par 59.233.235.218
@@ -13,6 +16,7 @@ Les pakets envoies 1 char. (Dernier couple hexadécimal)
 
 Pour aller plus vite, on peut utiliser la fonction 
 Follow TCP stream pour voir l’échange
+et utiliser l'option hexdup pour voir le code en hexa
 On trouve le mdp: ft_wandr...NDRel.L0L
 Qui ne fonctionne pas avec su flag02
 
@@ -22,7 +26,7 @@ On remarque que le code ascii pour un ‘.’ Est 2E est non 7f
 On peut convertir 7f en décimal pour le comparé à la table ascii: 
 Dec 7f = 127
 Dans la table ASCII 127 correspond à DEL 
-Le mdr deviens : ft_waNDReL0L
+Le mdp deviens : ft_waNDReL0L
 
 Su flag02
 

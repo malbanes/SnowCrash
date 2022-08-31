@@ -1,0 +1,30 @@
+Run VirtualBox
+
+SNOWCRASH VM
+
+Create new machine
+config 
+	type: linux
+	version: Debian (64-bit)
+Réseau par pont
+	EN0:Wifi
+stockage
+	new IDE, SnowCrash.iso
+
+42 VM
+
+config: double click sur 42.VM 
+réseau: nat
+add port ssh TCP p 22 p 22
+
+CONNEXION ssh
+
+ssh -p 4242 level00@192.XXX.X.XX
+mdp: level00
+
+on 42VM
+	open terminator
+	ip addr 127.0.0.1
+ssh -p 22 user42@127.0.0.1
+mdp: user42
+

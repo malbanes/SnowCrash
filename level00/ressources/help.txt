@@ -1,4 +1,5 @@
-On sait avec la vidéo de présentation que le flag est accessible par l’user flag00. On peut utiliser find -groups/-user pour voir à quel fichier flag00 à acces
+On sait avec la vidéo de présentation que le flag est accessible par l’user flag00. 
+On peut utiliser find -groups/-user pour voir à quel fichier flag00 à acces
 
 find / -group flag00 2>/tmp/errs
 	liste pleine de : Permission denied (impossible de les lires donc inutile)
@@ -17,7 +18,7 @@ Résultat peut fiable testons le premier (rot13/cesar)
 On essaie le premier,
 Su flag00
 	nottoohardhere
-Par chance, ce mot de passe fonctionne. 
+ce mot de passe fonctionne. 
 Après un get flag:
 Su level01
  token : x24ti5gi3x0ol2eh4esiuxias
