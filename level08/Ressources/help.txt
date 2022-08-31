@@ -1,0 +1,11 @@
+Ll
+On à un binaire type Socket qui lit des fichier et un fichier token
+
+On peut lire un fichier depuis un dossier écrivable /tmp/
+On fait pointer un lien symbolique depuis le dit ficher vers token pour voir son contenu
+
+ln -s /home/user/level08/token /tmp/flag
+C’est suffisant pour avoir le token: quif5eloekouj29ke0vouxean
+
+Su flag08 - get flag 
+	25749xKZ8L7DkSCwJkT9dyv6f

