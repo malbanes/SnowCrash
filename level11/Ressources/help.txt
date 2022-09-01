@@ -1,0 +1,45 @@
+On nous présente un fichier .lua
+
+on peut le cat
+
+/usr/bin/env lua
+
+cho toto > /tmp/toto
+level11@SnowCrash:~$ cat /tmp/toto
+toto
+Pour cet exercice, on à les droits d'écriture ET de lecture dans /tmp/ !!!!!!
+
+run a local server on port 5151
+	server = assert(socket.bind("127.0.0.1", 5151))
+
+prog = io.popen("echo "..pass.." | sha1sum", "r")
+
+
+comme l'éxercice précédent on peut écouter la communication réseau avec netcat
+qui prompt un mdp
+
+On nous donne toutes les informations de hashage du mdp ainsi que le hash de comparaison
+sha1sum, sel "r" hash: f05d1d066fb246efe0c6f7d095f909a7a0cf34a0
+en lua ~= est l'inverse de == on peut trouver le mdp
+sur dcode, methode sha1, salt = "r"
+résultat: NotSoEasy
+	Ne fonctionne pas, ce n'est effectivement pas si simple.
+
+Regardons la fonctions de hash, 
+
+io.popen appel echo de l'argument password avant de le crypter.
+On ne peut pas afficher sur la sortie standard mais on peut stocker le ésultats dans /tmp/ et le lire plus tard
+
+En effet en entrant dans le prompt mdp:
+test > /tmp/test, on à pas acces sur netcat mais le fichier /tmp/test à bien été créer.
+
+Pour run une commande avec echo, echo ;commande
+
+dans le prompt taper: echo ;getflag > /tmp/flag
+puis echo /tmp/flag
+	fa6v5ateaw21peobuub8ipe6s
+
+
+
+
+
